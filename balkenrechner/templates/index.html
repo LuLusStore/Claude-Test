@@ -16,338 +16,110 @@
       --text: #e8eaf0;
       --muted: #7a7f9a;
       --border: #2e3348;
-      --shadow: 0 4px 24px rgba(0,0,0,0.4);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Segoe UI', system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-    }
-
-    header {
-      background: linear-gradient(135deg, #1a1d27 0%, #141829 100%);
-      border-bottom: 1px solid var(--border);
-      padding: 18px 32px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+    header { background: linear-gradient(135deg, #1a1d27 0%, #141829 100%); border-bottom: 1px solid var(--border); padding: 18px 32px; display: flex; align-items: center; gap: 14px; }
     header .logo { font-size: 2rem; }
-    header h1 { font-size: 1.4rem; font-weight: 700; letter-spacing: 0.02em; }
+    header h1 { font-size: 1.4rem; font-weight: 700; }
     header span { color: var(--muted); font-size: 0.85rem; }
-
-    .layout {
-      display: grid;
-      grid-template-columns: 340px 1fr;
-      gap: 0;
-      min-height: calc(100vh - 64px);
-    }
-
-    /* ---- Sidebar ---- */
-    .sidebar {
-      background: var(--surface);
-      border-right: 1px solid var(--border);
-      padding: 24px 20px;
-      overflow-y: auto;
-    }
-    .section-title {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 12px;
-      margin-top: 24px;
-    }
+    .layout { display: grid; grid-template-columns: 340px 1fr; min-height: calc(100vh - 64px); }
+    .sidebar { background: var(--surface); border-right: 1px solid var(--border); padding: 24px 20px; overflow-y: auto; }
+    .section-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; margin-top: 24px; }
     .section-title:first-child { margin-top: 0; }
-
     .field { margin-bottom: 14px; }
-    label {
-      display: block;
-      font-size: 0.82rem;
-      color: var(--muted);
-      margin-bottom: 5px;
-    }
+    label { display: block; font-size: 0.82rem; color: var(--muted); margin-bottom: 5px; }
     label strong { color: var(--text); }
-    input[type=number], input[type=text] {
-      width: 100%;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 9px 12px;
-      color: var(--text);
-      font-size: 0.95rem;
-      outline: none;
-      transition: border-color 0.2s;
-    }
+    input[type=number] { width: 100%; background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 9px 12px; color: var(--text); font-size: 0.95rem; outline: none; transition: border-color 0.2s; }
     input:focus { border-color: var(--accent); }
-
-    .load-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr 28px;
-      gap: 8px;
-      align-items: end;
-      margin-bottom: 10px;
-    }
-    .load-row input { margin-bottom: 0; }
-    .btn-del {
-      width: 28px; height: 36px;
-      background: #2e1a1a;
-      border: 1px solid #5c2a2a;
-      border-radius: 6px;
-      color: var(--accent2);
-      cursor: pointer;
-      font-size: 1rem;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .btn-del:hover { background: #3d1f1f; }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 9px 16px;
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
-      font-size: 0.88rem;
-      font-weight: 600;
-      transition: all 0.2s;
-    }
-    .btn-add {
-      background: #1e2d1e;
-      border: 1px solid #2e4a2e;
-      color: var(--accent3);
-      margin-bottom: 10px;
-    }
-    .btn-add:hover { background: #243624; }
-    .btn-primary {
-      background: var(--accent);
-      color: #fff;
-      width: 100%;
-      justify-content: center;
-      font-size: 1rem;
-      padding: 12px;
-      margin-top: 20px;
-      border-radius: 10px;
-    }
-    .btn-primary:hover { background: #3a7be0; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(79,142,247,0.3); }
-    .btn-primary:active { transform: translateY(0); }
-
-    /* ---- Main content ---- */
-    .main {
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .result-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 14px;
-    }
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 16px 18px;
-    }
+    .load-row { display: grid; grid-template-columns: 1fr 1fr 28px; gap: 8px; align-items: end; margin-bottom: 10px; }
+    .btn-del { width: 28px; height: 36px; background: #2e1a1a; border: 1px solid #5c2a2a; border-radius: 6px; color: var(--accent2); cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; }
+    .btn { display: inline-flex; align-items: center; gap: 6px; padding: 9px 16px; border-radius: 8px; border: none; cursor: pointer; font-size: 0.88rem; font-weight: 600; transition: all 0.2s; }
+    .btn-add { background: #1e2d1e; border: 1px solid #2e4a2e; color: var(--accent3); margin-bottom: 10px; }
+    .btn-primary { background: var(--accent); color: #fff; width: 100%; justify-content: center; font-size: 1rem; padding: 12px; margin-top: 20px; border-radius: 10px; }
+    .btn-primary:hover { background: #3a7be0; }
+    .main { padding: 24px; display: flex; flex-direction: column; gap: 20px; }
+    .result-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; }
     .card .label { font-size: 0.75rem; color: var(--muted); margin-bottom: 4px; }
     .card .value { font-size: 1.5rem; font-weight: 700; }
-    .card .unit  { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
-    .card.blue .value  { color: var(--accent); }
-    .card.red .value   { color: var(--accent2); }
+    .card .unit { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
+    .card.blue .value { color: var(--accent); }
+    .card.red .value { color: var(--accent2); }
     .card.green .value { color: var(--accent3); }
-    .card.yellow .value{ color: #f5c542; }
-
-    .chart-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 16px;
-    }
-    .chart-title {
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 12px;
-    }
-
-    .empty-state {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 300px;
-      color: var(--muted);
-      gap: 10px;
-    }
+    .card.yellow .value { color: #f5c542; }
+    .chart-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
+    .chart-title { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+    .empty-state { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 300px; color: var(--muted); gap: 10px; }
     .empty-state .icon { font-size: 3rem; opacity: 0.4; }
-    .empty-state p { font-size: 0.9rem; }
-
-    .error-box {
-      background: #2e1a1a;
-      border: 1px solid var(--accent2);
-      border-radius: 8px;
-      padding: 12px 16px;
-      color: var(--accent2);
-      font-size: 0.88rem;
-    }
+    .error-box { background: #2e1a1a; border: 1px solid var(--accent2); border-radius: 8px; padding: 12px 16px; color: var(--accent2); font-size: 0.88rem; }
   </style>
 </head>
 <body>
-
 <header>
   <div class="logo">⚙️</div>
-  <div>
-    <h1>Balkenrechner</h1>
-    <span>Einfeldträger · Maschinenbau</span>
-  </div>
+  <div><h1>Balkenrechner</h1><span>Einfeldträger · Maschinenbau</span></div>
 </header>
-
 <div class="layout">
-
-  <!-- SIDEBAR -->
   <aside class="sidebar">
-
     <div class="section-title">Systemparameter</div>
-
-    <div class="field">
-      <label><strong>Balkenlänge L</strong></label>
-      <input type="number" id="L" value="6" min="0.1" step="0.1">
-      <span style="font-size:0.78rem; color:var(--muted)">m</span>
-    </div>
-
-    <div class="field">
-      <label><strong>Biegesteifigkeit EI</strong> <span style="font-size:0.75rem">(optional)</span></label>
-      <input type="number" id="EI" value="10000" min="0" step="100">
-      <span style="font-size:0.78rem; color:var(--muted)">kN·m²</span>
-    </div>
-
+    <div class="field"><label><strong>Balkenlänge L</strong></label><input type="number" id="L" value="6" min="0.1" step="0.1"><span style="font-size:0.78rem;color:var(--muted)">m</span></div>
+    <div class="field"><label><strong>Biegesteifigkeit EI</strong> <span style="font-size:0.75rem">(optional)</span></label><input type="number" id="EI" value="10000" min="0" step="100"><span style="font-size:0.78rem;color:var(--muted)">kN·m²</span></div>
     <div class="section-title">Streckenlasten</div>
-
-    <div class="field">
-      <label><strong>Gleichlast q</strong></label>
-      <input type="number" id="q" value="0" min="0" step="0.5">
-      <span style="font-size:0.78rem; color:var(--muted)">kN/m</span>
-    </div>
-
+    <div class="field"><label><strong>Gleichlast q</strong></label><input type="number" id="q" value="0" min="0" step="0.5"><span style="font-size:0.78rem;color:var(--muted)">kN/m</span></div>
     <div class="section-title">Einzellasten</div>
-    <div style="font-size:0.75rem; color:var(--muted); margin-bottom:10px;">
-      Abstand a vom linken Auflager A
-    </div>
-
+    <div style="font-size:0.75rem;color:var(--muted);margin-bottom:10px;">Abstand a vom linken Auflager A</div>
     <div id="lasten-container">
       <div class="load-row" data-id="0">
-        <div class="field" style="margin:0">
-          <label>F [kN]</label>
-          <input type="number" class="F-input" value="20" step="0.5">
-        </div>
-        <div class="field" style="margin:0">
-          <label>a [m]</label>
-          <input type="number" class="a-input" value="2" min="0" step="0.1">
-        </div>
+        <div class="field" style="margin:0"><label>F [kN]</label><input type="number" class="F-input" value="20" step="0.5"></div>
+        <div class="field" style="margin:0"><label>a [m]</label><input type="number" class="a-input" value="2" min="0" step="0.1"></div>
         <button class="btn-del" onclick="removeLast(this)">✕</button>
       </div>
     </div>
-
     <button class="btn btn-add" onclick="addLast()">+ Einzellast hinzufügen</button>
-
     <button class="btn btn-primary" onclick="berechne()">▶ Berechnen</button>
-
   </aside>
-
-  <!-- MAIN -->
   <main class="main" id="main-content">
-
-    <div class="empty-state" id="empty">
-      <div class="icon">📐</div>
-      <p>Parameter eingeben und <strong>Berechnen</strong> klicken</p>
-    </div>
-
-    <div id="results" style="display:none; display:flex; flex-direction:column; gap:20px;">
-
+    <div class="empty-state" id="empty"><div class="icon">📐</div><p>Parameter eingeben und <strong>Berechnen</strong> klicken</p></div>
+    <div id="results" style="display:none;flex-direction:column;gap:20px;">
       <div class="result-cards" id="cards"></div>
-
-      <div class="chart-card">
-        <div class="chart-title">📊 Balkensystem</div>
-        <div id="plot-beam" style="height:160px"></div>
-      </div>
-
-      <div class="chart-card">
-        <div class="chart-title">📈 Querkraftlinie Q(x)</div>
-        <div id="plot-Q" style="height:220px"></div>
-      </div>
-
-      <div class="chart-card">
-        <div class="chart-title">📈 Biegemomenten linie M(x)</div>
-        <div id="plot-M" style="height:220px"></div>
-      </div>
-
-      <div class="chart-card" id="card-w" style="display:none">
-        <div class="chart-title">📉 Durchbiegung w(x)</div>
-        <div id="plot-w" style="height:220px"></div>
-      </div>
-
+      <div class="chart-card"><div class="chart-title">📊 Balkensystem</div><div id="plot-beam" style="height:160px"></div></div>
+      <div class="chart-card"><div class="chart-title">📈 Querkraftlinie Q(x)</div><div id="plot-Q" style="height:220px"></div></div>
+      <div class="chart-card"><div class="chart-title">📈 Biegemomenten linie M(x)</div><div id="plot-M" style="height:220px"></div></div>
+      <div class="chart-card" id="card-w" style="display:none"><div class="chart-title">📉 Durchbiegung w(x)</div><div id="plot-w" style="height:220px"></div></div>
     </div>
-
     <div class="error-box" id="error-box" style="display:none"></div>
-
   </main>
 </div>
-
 <script>
 let lastId = 0;
-
 function addLast() {
   lastId++;
   const container = document.getElementById('lasten-container');
   const row = document.createElement('div');
   row.className = 'load-row';
   row.dataset.id = lastId;
-  row.innerHTML = `
-    <div class="field" style="margin:0">
-      <label>F [kN]</label>
-      <input type="number" class="F-input" value="10" step="0.5">
-    </div>
-    <div class="field" style="margin:0">
-      <label>a [m]</label>
-      <input type="number" class="a-input" value="3" min="0" step="0.1">
-    </div>
-    <button class="btn-del" onclick="removeLast(this)">✕</button>
-  `;
+  row.innerHTML = `<div class="field" style="margin:0"><label>F [kN]</label><input type="number" class="F-input" value="10" step="0.5"></div><div class="field" style="margin:0"><label>a [m]</label><input type="number" class="a-input" value="3" min="0" step="0.1"></div><button class="btn-del" onclick="removeLast(this)">✕</button>`;
   container.appendChild(row);
 }
-
 function removeLast(btn) {
   const rows = document.querySelectorAll('.load-row');
   if (rows.length <= 1) return;
   btn.closest('.load-row').remove();
 }
-
-const DARK = '#0f1117';
-const SURFACE = '#21253a';
 const plotConfig = { responsive: true, displayModeBar: false };
-const plotLayout = (yTitle, color) => ({
+const plotLayout = (yTitle) => ({
   paper_bgcolor: 'transparent', plot_bgcolor: 'transparent',
   margin: { t: 10, b: 40, l: 55, r: 20 },
   font: { color: '#7a7f9a', size: 11 },
   xaxis: { title: 'x [m]', gridcolor: '#2e3348', zerolinecolor: '#4f5878' },
   yaxis: { title: yTitle, gridcolor: '#2e3348', zerolinecolor: '#4f5878' },
-  shapes: [{ type: 'line', x0: 0, x1: 1, xref: 'paper', y0: 0, y1: 0,
-              line: { color: '#4f5878', width: 1, dash: 'dot' } }]
+  shapes: [{ type: 'line', x0: 0, x1: 1, xref: 'paper', y0: 0, y1: 0, line: { color: '#4f5878', width: 1, dash: 'dot' } }]
 });
-
 async function berechne() {
   const L = parseFloat(document.getElementById('L').value);
   const q = parseFloat(document.getElementById('q').value) || 0;
   const EI = parseFloat(document.getElementById('EI').value) || 0;
-
   const F_inputs = document.querySelectorAll('.F-input');
   const a_inputs = document.querySelectorAll('.a-input');
   const lasten = [];
@@ -356,22 +128,13 @@ async function berechne() {
     const a = parseFloat(a_inputs[i].value);
     if (!isNaN(F) && !isNaN(a) && F !== 0) lasten.push({ F, a });
   });
-
   document.getElementById('error-box').style.display = 'none';
-
   try {
-    const res = await fetch('/berechne', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ L, q, EI, lasten })
-    });
+    const res = await fetch('/berechne', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ L, q, EI, lasten }) });
     const data = await res.json();
     if (data.error) throw new Error(data.error);
-
     document.getElementById('empty').style.display = 'none';
     document.getElementById('results').style.display = 'flex';
-
-    // Ergebniskarten
     const cards = [
       { label: 'Auflager A', value: data.A, unit: 'kN', cls: 'blue' },
       { label: 'Auflager B', value: data.B, unit: 'kN', cls: 'blue' },
@@ -379,105 +142,29 @@ async function berechne() {
       { label: 'M_max', value: data.M_max, unit: 'kN·m', cls: 'yellow' },
       { label: 'Position M_max', value: data.M_max_pos, unit: 'm', cls: 'green' },
     ];
-    if (data.w_max !== undefined) {
-      cards.push({ label: 'w_max', value: data.w_max, unit: 'mm', cls: 'green' });
-    }
-    document.getElementById('cards').innerHTML = cards.map(c => `
-      <div class="card ${c.cls}">
-        <div class="label">${c.label}</div>
-        <div class="value">${c.value}</div>
-        <div class="unit">${c.unit}</div>
-      </div>
-    `).join('');
-
-    const x = data.x;
-
-    // Balkensystem-Plot
+    if (data.w_max !== undefined) cards.push({ label: 'w_max', value: data.w_max, unit: 'mm', cls: 'green' });
+    document.getElementById('cards').innerHTML = cards.map(c => `<div class="card ${c.cls}"><div class="label">${c.label}</div><div class="value">${c.value}</div><div class="unit">${c.unit}</div></div>`).join('');
     drawBeam(L, lasten, q, data.A, data.B);
-
-    // Querkraft
-    Plotly.newPlot('plot-Q', [{
-      x, y: data.Q, mode: 'lines', fill: 'tozeroy',
-      line: { color: '#e05c5c', width: 2 },
-      fillcolor: 'rgba(224,92,92,0.12)', name: 'Q(x)'
-    }], plotLayout('Q [kN]', '#e05c5c'), plotConfig);
-
-    // Moment
-    Plotly.newPlot('plot-M', [{
-      x, y: data.M, mode: 'lines', fill: 'tozeroy',
-      line: { color: '#f5c542', width: 2 },
-      fillcolor: 'rgba(245,197,66,0.12)', name: 'M(x)'
-    }], plotLayout('M [kN·m]', '#f5c542'), plotConfig);
-
-    // Durchbiegung
+    Plotly.newPlot('plot-Q', [{ x: data.x, y: data.Q, mode: 'lines', fill: 'tozeroy', line: { color: '#e05c5c', width: 2 }, fillcolor: 'rgba(224,92,92,0.12)', name: 'Q(x)' }], plotLayout('Q [kN]'), plotConfig);
+    Plotly.newPlot('plot-M', [{ x: data.x, y: data.M, mode: 'lines', fill: 'tozeroy', line: { color: '#f5c542', width: 2 }, fillcolor: 'rgba(245,197,66,0.12)', name: 'M(x)' }], plotLayout('M [kN·m]'), plotConfig);
     if (data.w) {
       document.getElementById('card-w').style.display = 'block';
-      Plotly.newPlot('plot-w', [{
-        x, y: data.w.map(v => v * 1000), mode: 'lines', fill: 'tozeroy',
-        line: { color: '#4cca6b', width: 2 },
-        fillcolor: 'rgba(76,202,107,0.12)', name: 'w(x)'
-      }], plotLayout('w [mm]', '#4cca6b'), plotConfig);
+      Plotly.newPlot('plot-w', [{ x: data.x, y: data.w.map(v => v * 1000), mode: 'lines', fill: 'tozeroy', line: { color: '#4cca6b', width: 2 }, fillcolor: 'rgba(76,202,107,0.12)', name: 'w(x)' }], plotLayout('w [mm]'), plotConfig);
     }
-
   } catch(e) {
     document.getElementById('error-box').style.display = 'block';
     document.getElementById('error-box').textContent = '⚠️ Fehler: ' + e.message;
   }
 }
-
 function drawBeam(L, lasten, q, A, B) {
   const shapes = [], annotations = [];
-
-  // Balken
-  shapes.push({ type: 'rect', x0: 0, x1: L, y0: -0.3, y1: 0.3,
-    fillcolor: '#4f8ef7', opacity: 0.8, line: { color: '#3a7be0', width: 1 } });
-
-  // Auflager A (Dreieck links)
-  annotations.push({ x: 0, y: -0.3, ax: 0, ay: 40,
-    axref: 'pixel', ayref: 'pixel',
-    text: `A = ${A} kN`, font: { color: '#4f8ef7', size: 11 },
-    showarrow: true, arrowcolor: '#4f8ef7', arrowwidth: 2 });
-
-  // Auflager B (Dreieck rechts)
-  annotations.push({ x: L, y: -0.3, ax: 0, ay: 40,
-    axref: 'pixel', ayref: 'pixel',
-    text: `B = ${B} kN`, font: { color: '#4f8ef7', size: 11 },
-    showarrow: true, arrowcolor: '#4f8ef7', arrowwidth: 2 });
-
-  // Einzellasten
-  lasten.forEach(({ F, a }) => {
-    annotations.push({
-      x: a, y: 0.3, ax: 0, ay: -50,
-      axref: 'pixel', ayref: 'pixel',
-      text: `F=${F} kN`, font: { color: '#e05c5c', size: 11 },
-      showarrow: true, arrowcolor: '#e05c5c', arrowwidth: 2, arrowhead: 3
-    });
-  });
-
-  // Streckenlast
-  if (q > 0) {
-    for (let xi = 0; xi <= L; xi += L / 12) {
-      annotations.push({
-        x: xi, y: 0.3, ax: 0, ay: -30,
-        axref: 'pixel', ayref: 'pixel',
-        text: '', showarrow: true, arrowcolor: 'rgba(245,197,66,0.6)', arrowwidth: 1.5, arrowhead: 2
-      });
-    }
-  }
-
-  const layout = {
-    paper_bgcolor: 'transparent', plot_bgcolor: 'transparent',
-    margin: { t: 20, b: 20, l: 20, r: 20 },
-    xaxis: { range: [-0.3, L + 0.3], showgrid: false, zeroline: false, showticklabels: false },
-    yaxis: { range: [-1.2, 1.5], showgrid: false, zeroline: false, showticklabels: false },
-    shapes, annotations,
-    font: { color: '#7a7f9a' }
-  };
-
-  Plotly.newPlot('plot-beam', [], layout, plotConfig);
+  shapes.push({ type: 'rect', x0: 0, x1: L, y0: -0.3, y1: 0.3, fillcolor: '#4f8ef7', opacity: 0.8, line: { color: '#3a7be0', width: 1 } });
+  annotations.push({ x: 0, y: -0.3, ax: 0, ay: 40, axref: 'pixel', ayref: 'pixel', text: `A = ${A} kN`, font: { color: '#4f8ef7', size: 11 }, showarrow: true, arrowcolor: '#4f8ef7', arrowwidth: 2 });
+  annotations.push({ x: L, y: -0.3, ax: 0, ay: 40, axref: 'pixel', ayref: 'pixel', text: `B = ${B} kN`, font: { color: '#4f8ef7', size: 11 }, showarrow: true, arrowcolor: '#4f8ef7', arrowwidth: 2 });
+  lasten.forEach(({ F, a }) => { annotations.push({ x: a, y: 0.3, ax: 0, ay: -50, axref: 'pixel', ayref: 'pixel', text: `F=${F} kN`, font: { color: '#e05c5c', size: 11 }, showarrow: true, arrowcolor: '#e05c5c', arrowwidth: 2, arrowhead: 3 }); });
+  if (q > 0) { for (let xi = 0; xi <= L; xi += L / 12) { annotations.push({ x: xi, y: 0.3, ax: 0, ay: -30, axref: 'pixel', ayref: 'pixel', text: '', showarrow: true, arrowcolor: 'rgba(245,197,66,0.6)', arrowwidth: 1.5, arrowhead: 2 }); } }
+  Plotly.newPlot('plot-beam', [], { paper_bgcolor: 'transparent', plot_bgcolor: 'transparent', margin: { t: 20, b: 20, l: 20, r: 20 }, xaxis: { range: [-0.3, L + 0.3], showgrid: false, zeroline: false, showticklabels: false }, yaxis: { range: [-1.2, 1.5], showgrid: false, zeroline: false, showticklabels: false }, shapes, annotations, font: { color: '#7a7f9a' } }, plotConfig);
 }
-
-// Initiales Beispiel direkt berechnen
 window.onload = () => berechne();
 </script>
 </body>
